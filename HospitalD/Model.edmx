@@ -54,6 +54,7 @@
           <Property Name="DischargeDate" Type="date" />
           <Property Name="ID_Department" Type="int" Nullable="false" />
           <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="ID_Staff" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Patients">
           <Key>
@@ -62,7 +63,7 @@
           <Property Name="ID_Patient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="BirthDate" Type="date" />
-          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="1" />
           <Property Name="Phone" Type="nvarchar" MaxLength="15" />
           <Property Name="Address" Type="nvarchar" MaxLength="255" />
           <Property Name="ID_Role" Type="int" Nullable="false" />
@@ -129,7 +130,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientMe__ID_De__03BB8E22">
+        <Association Name="FK__PatientMe__ID_De__2704CA5F">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="PatientMedicalRecord" Type="Self.PatientMedicalRecord" Multiplicity="*" />
           <ReferentialConstraint>
@@ -141,7 +142,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientMe__ID_Di__00DF2177">
+        <Association Name="FK__PatientMe__ID_Di__24285DB4">
           <End Role="Diagnoses" Type="Self.Diagnoses" Multiplicity="0..1" />
           <End Role="PatientMedicalRecord" Type="Self.PatientMedicalRecord" Multiplicity="*" />
           <ReferentialConstraint>
@@ -153,7 +154,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientMe__ID_Me__02C769E9">
+        <Association Name="FK__PatientMe__ID_Me__2610A626">
           <End Role="Medications" Type="Self.Medications" Multiplicity="0..1" />
           <End Role="PatientMedicalRecord" Type="Self.PatientMedicalRecord" Multiplicity="*" />
           <ReferentialConstraint>
@@ -165,7 +166,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientMe__ID_Pa__7FEAFD3E">
+        <Association Name="FK__PatientMe__ID_Pa__2334397B">
           <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
           <End Role="PatientMedicalRecord" Type="Self.PatientMedicalRecord" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,7 +178,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientMe__ID_Pr__01D345B0">
+        <Association Name="FK__PatientMe__ID_Pr__251C81ED">
           <End Role="MedicalProcedures" Type="Self.MedicalProcedures" Multiplicity="0..1" />
           <End Role="PatientMedicalRecord" Type="Self.PatientMedicalRecord" Multiplicity="*" />
           <ReferentialConstraint>
@@ -249,6 +250,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PatientMedicalRecord_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="PatientMedicalRecord" Type="Self.PatientMedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="ID_Staff" />
+            </Principal>
+            <Dependent Role="PatientMedicalRecord">
+              <PropertyRef Name="ID_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID_Role" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище HospitalDRmModelContainer">
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Diagnoses" EntityType="Self.Diagnoses" Schema="dbo" store:Type="Tables" />
@@ -268,23 +293,23 @@
             <End Role="Staff" EntitySet="Staff" />
             <End Role="MedicalProcedures" EntitySet="MedicalProcedures" />
           </AssociationSet>
-          <AssociationSet Name="FK__PatientMe__ID_De__03BB8E22" Association="Self.FK__PatientMe__ID_De__03BB8E22">
+          <AssociationSet Name="FK__PatientMe__ID_De__2704CA5F" Association="Self.FK__PatientMe__ID_De__2704CA5F">
             <End Role="Departments" EntitySet="Departments" />
             <End Role="PatientMedicalRecord" EntitySet="PatientMedicalRecord" />
           </AssociationSet>
-          <AssociationSet Name="FK__PatientMe__ID_Di__00DF2177" Association="Self.FK__PatientMe__ID_Di__00DF2177">
+          <AssociationSet Name="FK__PatientMe__ID_Di__24285DB4" Association="Self.FK__PatientMe__ID_Di__24285DB4">
             <End Role="Diagnoses" EntitySet="Diagnoses" />
             <End Role="PatientMedicalRecord" EntitySet="PatientMedicalRecord" />
           </AssociationSet>
-          <AssociationSet Name="FK__PatientMe__ID_Me__02C769E9" Association="Self.FK__PatientMe__ID_Me__02C769E9">
+          <AssociationSet Name="FK__PatientMe__ID_Me__2610A626" Association="Self.FK__PatientMe__ID_Me__2610A626">
             <End Role="Medications" EntitySet="Medications" />
             <End Role="PatientMedicalRecord" EntitySet="PatientMedicalRecord" />
           </AssociationSet>
-          <AssociationSet Name="FK__PatientMe__ID_Pa__7FEAFD3E" Association="Self.FK__PatientMe__ID_Pa__7FEAFD3E">
+          <AssociationSet Name="FK__PatientMe__ID_Pa__2334397B" Association="Self.FK__PatientMe__ID_Pa__2334397B">
             <End Role="Patients" EntitySet="Patients" />
             <End Role="PatientMedicalRecord" EntitySet="PatientMedicalRecord" />
           </AssociationSet>
-          <AssociationSet Name="FK__PatientMe__ID_Pr__01D345B0" Association="Self.FK__PatientMe__ID_Pr__01D345B0">
+          <AssociationSet Name="FK__PatientMe__ID_Pr__251C81ED" Association="Self.FK__PatientMe__ID_Pr__251C81ED">
             <End Role="MedicalProcedures" EntitySet="MedicalProcedures" />
             <End Role="PatientMedicalRecord" EntitySet="PatientMedicalRecord" />
           </AssociationSet>
@@ -307,6 +332,14 @@
           <AssociationSet Name="FK__Users__ID_Role__72910220" Association="Self.FK__Users__ID_Role__72910220">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientMedicalRecord_Staff" Association="Self.FK_PatientMedicalRecord_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="PatientMedicalRecord" EntitySet="PatientMedicalRecord" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Roles" Association="Self.FK_Staff_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -375,6 +408,8 @@
           <NavigationProperty Name="MedicalProcedures" Relationship="Self.FK__PatientMe__ID_Pr__74AE54BC" FromRole="PatientMedicalRecord" ToRole="MedicalProcedures" />
           <NavigationProperty Name="Medications" Relationship="Self.FK__PatientMe__ID_Me__75A278F5" FromRole="PatientMedicalRecord" ToRole="Medications" />
           <NavigationProperty Name="Patients" Relationship="Self.FK__PatientMe__ID_Pa__72C60C4A" FromRole="PatientMedicalRecord" ToRole="Patients" />
+          <Property Name="ID_Staff" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="HospitalDRmModel.FK_PatientMedicalRecord_Staff" FromRole="PatientMedicalRecord" ToRole="Staff" />
         </EntityType>
         <EntityType Name="Patients">
           <Key>
@@ -383,7 +418,7 @@
           <Property Name="ID_Patient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BirthDate" Type="DateTime" Precision="0" />
-          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="ID_Role" Type="Int32" Nullable="false" />
@@ -426,6 +461,7 @@
           <NavigationProperty Name="MedicalProcedures" Relationship="Self.FK__MedicalPr__ID_St__6E01572D" FromRole="Staff" ToRole="MedicalProcedures" />
           <NavigationProperty Name="Positions" Relationship="Self.FK__Staff__ID_Positi__60A75C0F" FromRole="Staff" ToRole="Positions" />
           <NavigationProperty Name="Roles" Relationship="Self.FK__Staff__ID_Role__619B8048" FromRole="Staff" ToRole="Roles" />
+          <NavigationProperty Name="PatientMedicalRecord" Relationship="HospitalDRmModel.FK_PatientMedicalRecord_Staff" FromRole="Staff" ToRole="PatientMedicalRecord" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -640,7 +676,23 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_PatientMedicalRecord_Staff" Association="HospitalDRmModel.FK_PatientMedicalRecord_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="PatientMedicalRecord" EntitySet="PatientMedicalRecord" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_PatientMedicalRecord_Staff">
+          <End Type="HospitalDRmModel.Staff" Role="Staff" Multiplicity="1" />
+          <End Type="HospitalDRmModel.PatientMedicalRecord" Role="PatientMedicalRecord" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="ID_Staff" />
+            </Principal>
+            <Dependent Role="PatientMedicalRecord">
+              <PropertyRef Name="ID_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -688,6 +740,7 @@
           <EntitySetMapping Name="PatientMedicalRecord">
             <EntityTypeMapping TypeName="HospitalDRmModel.PatientMedicalRecord">
               <MappingFragment StoreEntitySet="PatientMedicalRecord">
+                <ScalarProperty Name="ID_Staff" ColumnName="ID_Staff" />
                 <ScalarProperty Name="ID_Record" ColumnName="ID_Record" />
                 <ScalarProperty Name="ID_Patient" ColumnName="ID_Patient" />
                 <ScalarProperty Name="ID_Diagnosis" ColumnName="ID_Diagnosis" />

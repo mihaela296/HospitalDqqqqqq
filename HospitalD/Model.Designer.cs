@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "C:\Users\227217\Downloads\HospitalMalinin1-master\HospitalMalinin1-master\HospitalD\Model.edmx" включено. 
+﻿// Создание кода T4 для модели "C:\Users\SASA\Source\Repos\HospitalDqqqqqq\HospitalD\Model.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.
