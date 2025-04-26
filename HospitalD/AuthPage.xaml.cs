@@ -29,7 +29,7 @@ namespace HospitalD
                 var user = db.Users
                     .AsNoTracking()
                     .FirstOrDefault(u => u.Username == usernameTextBox.Text &&
-                                         u.Password == passwordHash);
+                                       u.Password == passwordHash);
 
                 if (user == null)
                 {
@@ -37,7 +37,6 @@ namespace HospitalD
                     return;
                 }
 
-                // Навигация на страницу в зависимости от роли пользователя
                 Window newWindow;
                 switch (user.ID_Role)
                 {
@@ -48,7 +47,17 @@ namespace HospitalD
                         newWindow = new EmployeePage(user);
                         break;
                     case 3:
-                        newWindow = new PatientPage(user);
+                        // Используем Username для поиска пациента
+                        var patient = db.Patients.FirstOrDefault(p => p.Username == user.Username);
+                        if (patient != null)
+                        {
+                            newWindow = new PatientPage(user);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ошибка: данные пациента не найдены!");
+                            return;
+                        }
                         break;
                     default:
                         MessageBox.Show("Неизвестная роль пользователя!");

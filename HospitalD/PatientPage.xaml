@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:HospitalD"
         mc:Ignorable="d"
         Title="PatientPage" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Style="{StaticResource StackPanelAdmin}">
+            <Button Content="Мед.карта" Style="{StaticResource MenuButtonStyle}" Click="MedicalRecord_Click"/>
+            <Button Content="Запись на прием" Style="{StaticResource MenuButtonStyle}" Click="Appointment_Click"/>
+            <Button Content="Мои записи" Style="{StaticResource MenuButtonStyle}" Click="MyAppointments_Click"/>
+            <Button Content="Выйти" Style="{StaticResource LogoutButtonStyle}" Click="Logout_Click"/>
+        </StackPanel>
+
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
 </Window>

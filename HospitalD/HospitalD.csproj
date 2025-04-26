@@ -216,6 +216,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MakeAppointmentPage.xaml.cs">
+      <DependentUpon>MakeAppointmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientAppointmentsPage.xaml.cs">
+      <DependentUpon>PatientAppointmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PatientMedicalRecordPage.xaml.cs">
+      <DependentUpon>PatientMedicalRecordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Добавить, редактировать страниц админа\AddEditDepartmentPage.xaml.cs">
       <DependentUpon>AddEditDepartmentPage.xaml</DependentUpon>
     </Compile>
@@ -321,6 +330,18 @@
     <Compile Include="Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Page Include="MakeAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientAppointmentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatientMedicalRecordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Добавить, редактировать страниц админа\AddEditDepartmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

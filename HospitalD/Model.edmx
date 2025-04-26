@@ -68,6 +68,8 @@
           <Property Name="Address" Type="nvarchar" MaxLength="255" />
           <Property Name="ID_Role" Type="int" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Positions">
           <Key>
@@ -425,6 +427,8 @@
           <NavigationProperty Name="PatientMedicalRecord" Relationship="Self.FK__PatientMe__ID_Pa__72C60C4A" FromRole="Patients" ToRole="PatientMedicalRecord" />
           <NavigationProperty Name="Roles" Relationship="Self.FK__Patients__ID_Rol__6B24EA82" FromRole="Patients" ToRole="Roles" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Positions">
           <Key>
@@ -758,6 +762,8 @@
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="HospitalDRmModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="ID_Patient" ColumnName="ID_Patient" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
